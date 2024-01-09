@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "203206341616",
+    "project_id": "database16-e37cf",
+    "storage_bucket": "database16-e37cf.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:203206341616:android:a6b216e8dc3c0d7465e335",
+        "android_client_info": {
+          "package_name": "com.example.database16"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBjqHyH7AZcEQ9x9_C9Fri2aP9R-VUo-zg"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
