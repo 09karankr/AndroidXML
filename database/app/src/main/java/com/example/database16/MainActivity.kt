@@ -1,9 +1,11 @@
 package com.example.database16
 
+import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.widget.Button
 import android.widget.EditText
+import android.widget.TextView
 import android.widget.Toast
 import com.google.android.material.textfield.TextInputEditText
 import com.google.firebase.database.DatabaseReference
@@ -15,12 +17,12 @@ class MainActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
-
-        val signButton = findViewById<Button>(R.id.btnSignUp)
-        val etName = findViewById<TextInputEditText>(R.id.etName)
         val etMail = findViewById<TextInputEditText>(R.id.etMail)
-        val userID = findViewById<TextInputEditText>(R.id.etUserName)
+        val etName = findViewById<TextInputEditText>(R.id.etName)
         val userPassword = findViewById<TextInputEditText>(R.id.etPassword)
+        val userID = findViewById<TextInputEditText>(R.id.etUserName)
+        val signButton = findViewById<Button>(R.id.btnSignUp)
+
 
 
         signButton.setOnClickListener {
@@ -30,7 +32,7 @@ class MainActivity : AppCompatActivity() {
             val uniqueId = userID.text.toString()
 
 
-            val user = User(name, mail, password, uniqueId)
+            val user = User(mail, name, password, uniqueId)
             database = FirebaseDatabase.getInstance().getReference("User")
             database.child(uniqueId).setValue(user).addOnSuccessListener {
                 etName.text?.clear()
@@ -38,6 +40,12 @@ class MainActivity : AppCompatActivity() {
             }.addOnSuccessListener {
                 Toast.makeText(this,"Failed",Toast.LENGTH_SHORT).show()
             }
+        }
+
+        val signIntext = findViewById<TextView>(R.id.tvSignIn)
+        signIntext.setOnClickListener {
+            val openSignInActivity = Intent(this, SignInActivity::class.java)
+            startActivity(openSignInActivity)
         }
 
     }
