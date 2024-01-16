@@ -27,8 +27,11 @@ class MainActivity : AppCompatActivity() {
             })
             builder1.show()
         }
+        binding.btn2.setOnClickListener {
+            val builder2 = AlertDialog.Builder(this)
+
 
 
         }
 
-    }
+    }}
