@@ -9,6 +9,7 @@
     tools:context=".MainActivity">
 
     <TextView
+
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="A Simple quiz"
@@ -25,7 +26,7 @@
         android:layout_marginTop="35dp"
         android:textStyle="bold"
         android:layout_marginLeft="22dp"
-        android:textSize="20dp"
+        android:textSize="20sp"
         android:text="Question 1). How many time zones are there in Russia?" />
 
     <TextView
@@ -35,7 +36,7 @@
         android:layout_marginTop="35dp"
         android:textStyle="bold"
         android:layout_marginLeft="22dp"
-        android:textSize="20dp"
+        android:textSize="20sp"
 
         android:text="Question 2). What is the national flower of India?" />
 
@@ -46,7 +47,7 @@
         android:layout_marginTop="35dp"
         android:textStyle="bold"
         android:layout_marginLeft="22dp"
-        android:textSize="20dp"
+        android:textSize="20sp"
         android:text="Question 3). The benefits of the object orientation are: " />
 
     <Button
