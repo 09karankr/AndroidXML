@@ -2,6 +2,7 @@ package com.example.recyclerview
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 
 class MainActivity : AppCompatActivity() {
@@ -21,7 +22,7 @@ class MainActivity : AppCompatActivity() {
             R.drawable.pic5,
             R.drawable.pic6
         )
-        var newsHeadingArray = arrayOf(
+        val newsHeadingArray = arrayOf(
             "U.K Foreign Secretary james cleverly raises issue of bbc tax searches with eam jaishankar",
             "cooking gas prices hiked by 50 for domestic, 350 for commercial cylinders",
             "joe biden appoints two prominent indian american corporate leaders to his export council",
@@ -31,5 +32,15 @@ class MainActivity : AppCompatActivity() {
             "largest gathering of foreign ministers hosted by any g20 presidency foreign secretary vinay kwatra"
 
        )
+
+        // to set hav bhaw of items inside recyclerview,vertically scrolling, horizontally, uniform grid
+        myRecyclerView.layoutManager = LinearLayoutManager(this)
+        newsArrayList = arrayListOf<News>()
+
+        for (index in newsImageArray.indices){
+            val news = News(newsHeadingArray[index], newsImageArray[index])
+            newsArrayList.add(news)
+        }
+
     }
 }
