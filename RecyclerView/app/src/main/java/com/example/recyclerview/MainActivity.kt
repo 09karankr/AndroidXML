@@ -1,5 +1,6 @@
 package com.example.recyclerview
 
+import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import androidx.recyclerview.widget.LinearLayoutManager
@@ -11,7 +12,7 @@ class MainActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
-
+        supportActionBar?.hide()
         myRecyclerView = findViewById(R.id.recyclerView)
 
         var newsImageArray = arrayOf(
@@ -33,14 +34,38 @@ class MainActivity : AppCompatActivity() {
 
        )
 
+        val newsContent = arrayOf(
+            getString(R.string.news_content),
+            getString(R.string.news_content),
+            getString(R.string.news_content),
+            getString(R.string.news_content),
+            getString(R.string.news_content),
+            getString(R.string.news_content),
+        )
+
         // to set hav bhaw of items inside recyclerview,vertically scrolling, horizontally, uniform grid
         myRecyclerView.layoutManager = LinearLayoutManager(this)
         newsArrayList = arrayListOf<News>()
 
         for (index in newsImageArray.indices){
-            val news = News(newsHeadingArray[index], newsImageArray[index])
+            val news = News(newsHeadingArray[index], newsImageArray[index],newsContent[index])
             newsArrayList.add(news)
         }
+
+        var myAdapter = MyAdapter(newsArrayList,this)
+        myRecyclerView.adapter = myAdapter
+
+        myAdapter.setItemClickListener(object : MyAdapter.onItemClickListener{
+            override fun onItemClick(position: Int) {
+                // on clicking each item, what action do you want to perform
+
+                val intent = Intent(this@MainActivity,NewsDetails::class.java)
+                intent.putExtra("heading", newsArrayList[position].newsHeading)
+                intent.putExtra("imageId",newsArrayList[position].newsImage)
+                intent.putExtra("newscontent",newsArrayList[position].newsContent)
+                startActivity(intent)
+            }
+        })
 
     }
 }
